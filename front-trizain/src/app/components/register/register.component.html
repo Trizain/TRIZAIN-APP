@@ -1,0 +1,24 @@
+<div class="col-md-12 d-flex flex-column align-items-center p-4">
+    <div class="login">
+        <h2>REGISTER IN TRIZAIN</h2>
+        <form action="" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="mt-2 mb-2">
+            <div class="form-group">
+                <label for="full_name">Full name: </label>
+                <input type="full_name" name="full_name" id="full_name" #full_name="ngModel" [(ngModel)]="user.full_name" class="form-control" required email>
+            </div>
+            <div class="form-group">
+                <label for="username">Username: </label>
+                <input type="username" name="username" id="username" #username="ngModel" [(ngModel)]="user.username" class="form-control" required email>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address: </label>
+                <input type="email" name="email" id="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" required email>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" required>
+            </div>
+            <input type="submit" value="Register" class="col-md-12 btn btn-secondary">
+        </form>
+    </div>
+</div>

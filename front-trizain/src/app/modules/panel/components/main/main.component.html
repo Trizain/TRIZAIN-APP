@@ -1,0 +1,125 @@
+<div class="row p-0 m-0 main">
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 dark" style="width: 250px;">
+    <a href="/"
+      class="d-flex flex-column align-items-center flex-shrink-0 p-3 mr-3 link-dark text-decoration-none title-panel dark">
+      <span class="fs-5 fw-semibold font-weight-bold">Projects</span>
+    </a>
+    <div class="list-group dark vh-100 panel flex-grow overflow-auto list-group-flush border-bottom scrollarea">
+      <div href="#" class="d-flex flex-column align-items-center py-3 lh-tight" aria-current="true">
+        <div class="btn-group me-2" role="group" aria-label="First group">
+          <button type="button" class="btn btn-sm btn-primary">Show all</button>
+          <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+            data-target="#exampleModal">New</button>
+        </div>
+      </div>
+      <a class="list-group-item list-group-item-action py-3 lh-tight dark" (click)="getAreas(project._id)"
+        *ngFor="let project of projects"  id="{{project._id}}">
+        <div class="d-flex w-100 align-items-center justify-content-between">
+          <strong class="mb-1">{{project.name}}</strong>
+        </div>
+        <div class="col-10 mb-1 small">{{project.description}}</div>
+      </a>
+    </div>
+  </div>
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 dark" style="width: 250px;">
+    <a href="/"
+      class="d-flex flex-column align-items-center flex-shrink-0 p-3 mr-3 link-dark text-decoration-none title-panel">
+      <span class="fs-5 fw-semibold font-weight-bold">Areas</span>
+    </a>
+    <div class="list-group dark vh-100 panel flex-grow overflow-auto list-group-flush border-bottom scrollarea">
+      <div href="#" class="d-flex flex-column align-items-center py-3 lh-tight" aria-current="true">
+        <div class="btn-group me-2" role="group" aria-label="First group">
+          <button type="button" class="btn btn-sm btn-primary">Show all</button>
+          <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+            data-target="#exampleModal1">New</button>
+        </div>
+      </div>
+      <div *ngIf="areas && areas.length >0">
+        <a [routerLink]="['/panel/files', area._id]"
+        routerLinkActive="router-link-active"  class="list-group-item list-group-item-action py-3 lh-tight dark area" (click)="selectArea(area._id)" *ngFor="let area of areas"
+        id="{{area._id}}">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">{{area.name}}</strong>
+          </div>
+          <div class="col-10 mb-1 small">Description</div>
+        </a>
+      </div>
+      <div *ngIf="areas && areas.length == 0">
+        <div class="pl-3 empty py-3 lh-tight dark">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">Empty</strong>
+          </div>
+        </div>
+      </div>
+      <!--Modal 2-->
+      <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Create Area</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="" #areaForm="ngForm" (ngSubmit)="createArea(projectForm)">
+                <div class="form-group">
+                  <label for="name">Name: </label>
+                  <input type="text" name="name" id="name" class="form-control" #name="ngModel" [(ngModel)]="area.name"
+                    required>
+                  <small class="d-block invalid-feedback font-weight-bold" *ngIf="name.touched && !name.valid">
+                    *Invalid name
+                  </small>
+                </div>
+                <input type="submit" value="Create" class="btn btn-primary" (click)="createArea(projectForm)"
+                  data-dismiss="modal">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7" *ngIf="area">
+    <router-outlet></router-outlet>
+  </div>
+  <div *ngIf="!area">
+    <h2>Choice Area</h2>
+  </div>
+</div>
+<!--Modal 1-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Project</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="" #projectForm="ngForm" (ngSubmit)="createProject(projectForm)">
+          <div class="form-group">
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name" class="form-control" #name="ngModel" [(ngModel)]="project.name"
+              required>
+            <small class="d-block invalid-feedback font-weight-bold" *ngIf="name.touched && !name.valid">
+              *Invalid name
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" name="description" id="description" class="form-control" #description="ngModel"
+              [(ngModel)]="project.description" required>
+            <small class="d-block invalid-feedback font-weight-bold" *ngIf="description.touched && !description.valid">
+              *Invalid description
+            </small>
+          </div>
+          <input type="submit" value="Create" class="btn btn-primary" (click)="createProject(projectForm)"
+            data-dismiss="modal">
+        </form>
+      </div>
+    </div>
+  </div>

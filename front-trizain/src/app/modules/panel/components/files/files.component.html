@@ -1,0 +1,58 @@
+<div class="container p-3 section-files" *ngIf="area">
+    <div class="d-flex">
+        <!-- Example single danger button -->
+        <div class="dropdown">
+            <a class="h4 color-white dropdown-toggle dropdown-new" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                New
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </div>
+        <h4 class="color-white ml-4">Project settings</h4>
+        <h4 class="color-white ml-3">Teams / Permissions</h4>
+        <h4 class="color-white ml-3">View</h4>
+    </div>
+    <hr>
+    <form action="">
+        <angular-file-uploader class="btn-files" [config]="afuConfig" [resetUpload]=resetVar
+            (fileSelected)="fileSelected($event)" (ApiResponse)="docUpload($event)">
+        </angular-file-uploader>
+
+        <div class="d-flex mt-4">
+            <div class="container-files mr-3" *ngFor="let file of area.files">
+                <div type="button" data-toggle="modal" attr.data-target="#demo{{file._id}}">
+                    <img src="assets/default-file.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let file of area.files">
+            <div class="modal fade" id="demo{{file._id}}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body modal-file-content">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <a (click)="download(file._id)">Download</a>
+                            <a (click)="download(file._id)">Share</a>
+                            <a (click)="download(file._id)">File settings</a>
+                            <a (click)="download(file._id)">File history</a>
+                            <a (click)="download(file._id)">Delete</a>
+                            <br>
+                            <a (click)="download(file._id)">New version</a>
+                            <a (click)="download(file._id)">Lock file</a>
+                            <a (click)="download(file._id)">Unlock file</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>

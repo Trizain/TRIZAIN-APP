@@ -1,0 +1,55 @@
+<div class="container teams">
+    <div class="d-flex flex-column align-items-center">
+        <h2 class="h1">
+            CHOSE YOUR TEAM
+        </h2>
+        <p class="or">or</p>
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
+            Create team
+        </button>
+        
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create TEAM</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" #teamForm="ngForm" (ngSubmit)="onSubmit(teamForm)">
+                        <div class="form-group">
+                            <label for="name">Name: </label>
+                            <input type="text" name="name" id="name" class="form-control" #name="ngModel" [(ngModel)]="team.name" required>
+                            <small class="d-block invalid-feedback font-weight-bold" *ngIf="name.touched && !name.valid">
+                                *Invalid name
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <input type="text" name="description" id="description" class="form-control" #description="ngModel" [(ngModel)]="team.description" required>
+                            <small class="d-block invalid-feedback font-weight-bold" *ngIf="description.touched && !description.valid">
+                                *Invalid description
+                            </small>
+                        </div>
+                        <input type="submit" value="Create" class="btn btn-primary" (click)="onSubmit(teamForm)" data-dismiss="modal">
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <div class="card mr-4" style="width: 18rem;"  *ngFor="let team of teams" (click)="teamClick(team._id)">
+                <img class="card-img-top" src="/assets/default-group.png" alt="Card image cap">
+                <div class="card-body">
+                    <h3 class="card-text text-secondary">
+                      {{team.name}}
+                    </h3>
+                </div>
+              </div>
+        </div>
+    </div>
+    
+    
+</div>
