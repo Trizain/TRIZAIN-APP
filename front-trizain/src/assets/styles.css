@@ -64,6 +64,7 @@ p{
     color:rgba(131 ,249, 210 ,0.63);
 }
 .teams .card{
+    width: 250px !important;
     transition: color 500ms, transform 500ms;
 }
 .teams .card:hover{

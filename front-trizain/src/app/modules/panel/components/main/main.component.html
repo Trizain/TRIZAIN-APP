@@ -12,12 +12,22 @@
             data-target="#exampleModal">New</button>
         </div>
       </div>
+      <div *ngIf="projects && projects.length > 0">
+
+      </div>
       <a class="list-group-item list-group-item-action py-3 lh-tight dark" (click)="getAreas(project._id)"
         *ngFor="let project of projects"  id="{{project._id}}">
         <div class="d-flex flex-column align-items-center justify-content-between">
           <strong class="mb-1">{{project.name}}</strong>
         </div>
       </a>
+      <div *ngIf="projects && projects.length == 0">
+        <div class="empty py-3 lh-tight dark">
+          <div class="d-flex w-100 flex-column align-items-center justify-content-between">
+            <strong class="mb-1">Empty</strong>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="d-flex flex-column align-items-stretch flex-shrink-0 dark" style="width: 180px;">
