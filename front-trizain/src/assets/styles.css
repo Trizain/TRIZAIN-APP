@@ -19,16 +19,29 @@ p{
     padding: 30px !important;
 }
 /* Navbar Section */
+.navbar .search{
+    border-radius: 20px !important;
+    width: 100% !important;
+}
 .mask-image img{
     width: 100%;
 }
 .mask-image{
     width: 70px;
-    margin-left: 150px;
+    margin-left: 40px;
     padding: 10px;
     background-color: #f4ede3;
     border-radius: 90px;
 } 
+.header-icon{
+    width: 50px;
+}
+.header{
+    display: flex !important;
+}
+.header .dropdown-toggle::after{
+    display: none;
+}
 /* LOGIN */
 .login{
     background-color: white;
@@ -153,19 +166,19 @@ background-color: black !important;
 .container-files img{
     width: 100%;
 }
-.modal-dialog {
+.section-files .modal-dialog {
     width: 1200px !important;
     height: 100px;
     position:fixed !important;
     top:auto !important;
-    right:20% !important;
+    right: 10% !important;
     left:auto !important;
     bottom:0 !important;
 }
-.modal-content{
+.section-files .modal-content{
     background-color: #5384ec !important;
 }
-.modal-file-content a{
+.section-files .modal-file-content a{
     color: white !important;
     font-size: 20px;
     padding: 20px;

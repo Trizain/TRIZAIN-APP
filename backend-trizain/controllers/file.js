@@ -40,7 +40,7 @@ const controller = {
                     } 
                     
                     var file = new File();
-                    file.project = project._id;
+                    file.project = area.project;
                     file.member = req.member.sub;
                     file.name = filename;
                     file.version = 1;
@@ -125,19 +125,19 @@ const controller = {
     },
     download: function(req,res){
         let fileId = req.params.id;
+        let member = req.member;
         let pase = false;
 
         File.findOne({_id:fileId}).populate('project').exec((err,file)=>{
             if(err) return res.status(500).send({status:'failed',message:'Error al buscar el archivo.'});
             if(!file) return res.status(404).send({status:'failed',message:'No existe el archivo indicado'});
 
-            MemberProject.findOne({member:req.member.sub},(err,mproject)=>{
+            MemberProject.findOne({member:member.sub},(err,mproject)=>{
                 if(err) return res.status(500).send({status:'failed',message:'Error al buscar el archivo.'});
-                console.log(file);
-                if((mproject && mproject.project == file.project)){
+                if((mproject && mproject.project == file.project) || role.is_superadmin(file.project.team,member)){
                     return res.download('uploads/files/'+file.name,file.name,function(err){
                         if(err){
-                            console.log(err);
+                            console.log("Es un error!!");
                         }
                     });
                 }else{

@@ -16,7 +16,7 @@ var controller = {
             if(err) return res.status(500).send({message:'Error al buscar el proyecto'});
             if(!project) return res.status(404).send({message:'No se puedo buscar el proyecto'});
 
-            if(role.is_superadmin(project.team,req.member)){
+            if(role.is_superadmin(project.team._id,req.member)){
                 let area = new Area();
                 area.project = projectId;
                 area.name = params.name;

@@ -1,5 +1,5 @@
 <div class="row p-0 m-0 main">
-  <div class="d-flex flex-column align-items-stretch flex-shrink-0 dark" style="width: 250px;">
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 dark" style="width: 180px;">
     <a href="/"
       class="d-flex flex-column align-items-center flex-shrink-0 p-3 mr-3 link-dark text-decoration-none title-panel dark">
       <span class="fs-5 fw-semibold font-weight-bold">Projects</span>
@@ -14,14 +14,13 @@
       </div>
       <a class="list-group-item list-group-item-action py-3 lh-tight dark" (click)="getAreas(project._id)"
         *ngFor="let project of projects"  id="{{project._id}}">
-        <div class="d-flex w-100 align-items-center justify-content-between">
+        <div class="d-flex flex-column align-items-center justify-content-between">
           <strong class="mb-1">{{project.name}}</strong>
         </div>
-        <div class="col-10 mb-1 small">{{project.description}}</div>
       </a>
     </div>
   </div>
-  <div class="d-flex flex-column align-items-stretch flex-shrink-0 dark" style="width: 250px;">
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 dark" style="width: 180px;">
     <a href="/"
       class="d-flex flex-column align-items-center flex-shrink-0 p-3 mr-3 link-dark text-decoration-none title-panel">
       <span class="fs-5 fw-semibold font-weight-bold">Areas</span>
@@ -38,15 +37,14 @@
         <a [routerLink]="['/panel/files', area._id]"
         routerLinkActive="router-link-active"  class="list-group-item list-group-item-action py-3 lh-tight dark area" (click)="selectArea(area._id)" *ngFor="let area of areas"
         id="{{area._id}}">
-          <div class="d-flex w-100 align-items-center justify-content-between">
+          <div class="d-flex w-100 flex-column align-items-center justify-content-between">
             <strong class="mb-1">{{area.name}}</strong>
           </div>
-          <div class="col-10 mb-1 small">Description</div>
         </a>
       </div>
       <div *ngIf="areas && areas.length == 0">
-        <div class="pl-3 empty py-3 lh-tight dark">
-          <div class="d-flex w-100 align-items-center justify-content-between">
+        <div class="empty py-3 lh-tight dark">
+          <div class="d-flex w-100 flex-column align-items-center justify-content-between">
             <strong class="mb-1">Empty</strong>
           </div>
         </div>

@@ -19,7 +19,7 @@ const controller = {
                 if (err) return res.status(500).send({ message: 'Error al buscar equipo' });
                 if (!team) return res.status(404).send({ message: 'No se pudo encontrar al equipo' });
                 
-                if (role.is_superadmin(team,req.member)){
+                if (role.is_superadmin(team._id,req.member)){
                     let project = new Project();
                     project.name = name;
                     project.description = description;

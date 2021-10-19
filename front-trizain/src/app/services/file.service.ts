@@ -29,7 +29,7 @@ export class FileService{
         let headers = new HttpHeaders().set('Content-Type','application/json').set('Authorization',token)
         .set('member_token',member_token);
 
-        return this._http.get(this.url + 'download/'+file_id,{headers:headers});
+        return this._http.get(this.url + 'download/'+file_id,{headers:headers,responseType: 'blob'});
     }
 
 

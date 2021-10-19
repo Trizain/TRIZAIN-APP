@@ -6,6 +6,7 @@ import { FileService } from 'src/app/services/file.service';
 import { Area } from 'src/app/models/area';
 import { global } from '../../../../services/global';
 import { ActivatedRoute } from '@angular/router';
+import * as fileSaver from 'file-saver';
 
 @Component({
   selector: 'app-files',
@@ -90,12 +91,18 @@ export class FilesComponent implements OnInit{
     });
     
   }
-  download(file_id:string){
+  download(file_id:string,filename:string){
     this._fileService.download(file_id,this.token,this.member_token).subscribe(
-      response => {
-        console.log(response);
+      (response:any) => {
+        let type_split = response.type.split('/');
+        let type = type_split[1];
+
+        console.log(type_split);
+        let blob:any = new Blob([response], { type: 'text/json; charset=utf-8' });
+        const url= window.URL.createObjectURL(blob);
+        fileSaver.saveAs(blob,filename+'.'+type);
       },
-      erro => {
+      (erro:any) => {
         console.log(<any>erro);
       }
     );
