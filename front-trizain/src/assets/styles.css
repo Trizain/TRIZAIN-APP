@@ -1,16 +1,55 @@
+/*Colores*/
 .color-white{
     color: #f4ede3 !important;
     text-decoration: none;
 }
+.color-title{
+    color: #ecc168 !important;
+}
+/*Elementos*/
 body{
     background-color: #202124 !important;
 }
 p{
     color: #f4ede3;
 }
-.h1{
+/*Elementos dropdown*/
+ng-multiselect-dropdown{
+    color: #f4ede3;
+}
+.dropdown-list,.dropdown-list ul, input{
+    background-color: #202124 !important;
+}
+.multiselect-item-checkbox div{
     color: #f4ede3 !important;
 }
+.multiselect-item-checkbox div:hover{
+    color:black !important;
+}
+/*Formularios y botones*/
+.form-control{
+    background-color: transparent !important;
+    color:#f4ede3 !important;
+}
+select option {
+    background-color: #202124 !important;
+}
+.login label{
+    color: #333 !important;
+}
+label{
+    color: #f4ede3 !important;
+}
+.btn-success{
+    width: 100px;
+    font-size: 21px !important;
+    font-weight: 700 !important;
+    padding: 0px !important;
+    background-color: #84bda3 !important;
+    border: none !important;
+    border-radius: 900px !important;
+}
+/**/
 .dark{
     background-color: #202124 !important;
 }
@@ -145,8 +184,8 @@ background-color: black !important;
 }
 
 /* Files Section */
-.section-files hr{
-    border-color: #f4ede3;
+hr{
+    border-color: #f4ede3 !important;
 }
 .dropdown-new:hover{
     text-decoration: none;

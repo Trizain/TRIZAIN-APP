@@ -100,6 +100,7 @@ export class MainComponent implements OnInit, DoCheck {
   }
   getAreas(project_id:string){
     this.project_selected = project_id;
+    sessionStorage.setItem('project',project_id);
     sessionStorage.removeItem('area');
     // Add class active to project selected and remove session area
     let element = document.getElementById(this.project_selected);

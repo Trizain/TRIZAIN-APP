@@ -14,6 +14,7 @@ const mprojec_routes = require('./routes/member_project');
 const comment_route = require('./routes/comment');
 const fileShared_route = require('./routes/file_shared');
 const area_routes = require('./routes/area');
+const invitation_routes = require('./routes/invitation');
 
 //middlewares
 app.use(bodyParser.urlencoded({extended:false}));
@@ -39,6 +40,7 @@ app.use('/mproject',mprojec_routes);
 app.use('/comment',comment_route);
 app.use('/shared',fileShared_route);
 app.use('/area',area_routes);
+app.use('/invitation',invitation_routes);
 
 //exportar
 module.exports = app;

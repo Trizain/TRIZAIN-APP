@@ -1,22 +1,4 @@
-<div class="container p-3 section-files" *ngIf="area">
-    <div class="d-flex">
-        <!-- Example single danger button -->
-        <div class="dropdown">
-            <a class="h4 color-white dropdown-toggle dropdown-new" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                New
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </div>
-        <h4 class="color-white ml-4">Project settings</h4>
-        <h4 class="color-white ml-3">Teams / Permissions</h4>
-        <h4 class="color-white ml-3">View</h4>
-    </div>
-    <hr>
+<div class="container section-files" *ngIf="area">
     <form action="">
         <angular-file-uploader class="btn-files" [config]="afuConfig" [resetUpload]=resetVar
             (fileSelected)="fileSelected($event)" (ApiResponse)="docUpload($event)">

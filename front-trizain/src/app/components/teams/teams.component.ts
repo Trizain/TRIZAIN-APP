@@ -33,7 +33,7 @@ export class TeamsComponent implements OnInit {
     this.getTeams();
   }
   getTeams(){
-    this._teamService.teams(this.user_identified._id,this.token).subscribe(
+    this._teamService.teams(this.token).subscribe(
       response => {
         this.teams = response.teams;
       },

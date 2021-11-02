@@ -106,6 +106,17 @@ var controller = {
         }else{
             return res.status(404).send({errors:errors});
         }
+    },
+    all: function(req,res){
+        User.find({}).exec((err,users)=>{
+            if(err) return res.status(500).send({message:'Error al buscar usuarios'});
+            if(!users) res.status(404).send({message:'No se ha buscar los usuarios'});
+
+            return res.status(200).send({
+                'status' : 'success',
+                'users': users
+            });
+        });
     }
 }
 

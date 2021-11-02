@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {appRoutingProviders,routing} from './app.routing';
 import { AngularFileUploaderModule } from "angular-file-uploader";
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 // Modules
 import { PanelModule } from './modules/panel/panel.module';
@@ -29,7 +30,8 @@ import { TeamsComponent } from './components/teams/teams.component';
     BrowserModule,
     RouterModule,
     PanelModule,
-    AngularFileUploaderModule
+    AngularFileUploaderModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
     appRoutingProviders

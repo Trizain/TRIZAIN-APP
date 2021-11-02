@@ -45,6 +45,10 @@ export class UserService{
 
         return this.user;
     }
+    getAll(token:string):Observable<any>{
+        let headers = new HttpHeaders().set('Content-Type','application/json').set('Authorization',token);
+        return this._http.get(this.url + 'all/',{headers:headers});
+    }
     getToken(){
         let token = localStorage.getItem('token');
 

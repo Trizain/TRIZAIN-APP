@@ -17,7 +17,6 @@ var controller = {
             team.name = params.name;
             team.description = params.description;
             var date = new Date();
-            team.code = team.name.slice(-2) + date.getTime() + team.description.slice(-2);
 
             team.save((err,TeamSaved)=>{
                 if(err) return res.status(500).send({message:'Error al crear el equipo'});
@@ -99,6 +98,7 @@ var controller = {
     },
     getTeamsByUser(req,res){
         const userId = req.user.sub;
+        console.log(userId);
 
         Team.find({user:userId}).sort([['date','descending']]).exec((err,teams)=>{
             if(err) return res.status(500).send({message:'Error al buscar los equipos'});

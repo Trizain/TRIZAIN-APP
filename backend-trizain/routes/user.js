@@ -10,5 +10,6 @@ route.get('/prueba',md_auth.authentication,UserController.prueba);
 route.post('/save',UserController.save);
 route.post('/login',UserController.login);
 route.put('/update',md_auth.authentication,UserController.update);
+route.get('/all',md_auth.authentication,UserController.all);
 
 module.exports = route;

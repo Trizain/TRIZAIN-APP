@@ -9,6 +9,7 @@ export class TeamService{
     public url:string;
     public team:Team;
     public token:string;
+    public id:any;
 
     constructor(
         private _http:HttpClient
@@ -24,9 +25,20 @@ export class TeamService{
 
         return this._http.post(this.url + 'save',params,{headers:headers});
     }
-    teams(user_id:string,token:string): Observable<any>{
+    teams(token:string): Observable<any>{
         let headers = new HttpHeaders().set('Content-Type','application/json').set('Authorization',token);
 
-        return this._http.get(this.url + 'teams/'+user_id,{headers:headers});
+        return this._http.get(this.url + 'all/teams',{headers:headers});
+    }
+    getId(){
+        let id = sessionStorage.getItem('team');
+
+        if(id != null && id != 'undefined'){
+            this.id = id;
+        }else{
+            this.id = null;
+        }
+
+        return this.id;
     }
 }

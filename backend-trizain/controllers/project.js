@@ -79,12 +79,17 @@ const controller = {
         Project.find({team:teamId},(err,projects)=>{
             if (err) return res.status(500).send({ message: 'Error al buscar el proyecto' });
             if (!projects) return res.status(404).send({ message: 'No se pudo buscar el proyecto' });
+            
+            Team.findById(teamId,(err,team)=>{
+                if (err) return res.status(500).send({ message: 'Error al buscar el team' });
+                if (!team) return res.status(404).send({ message: 'No se existe el team' });
 
-            if(teamId == req.member.team){
-                return res.status(200).send({status:'success',projects:projects});
-            }else{
-                return res.status(404).send({message:'Error en la ruta'});
-            }
+                if(teamId == req.member.team || role.is_superadmin(teamId,req.member) || team.user == req.user.sub){
+                    return res.status(200).send({status:'success',projects:projects});
+                }else{
+                    return res.status(404).send({message:'Error en la ruta'});
+                }
+            });
         });
     }
 }
